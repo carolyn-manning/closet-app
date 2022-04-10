@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 class Item extends Component {
   render () {
     return (
-      <div className="App">
-
+      <div className="item">
+        <li>{this.props.brand} {this.props.size} {this.props.color}</li>
       </div>
       );
     }
