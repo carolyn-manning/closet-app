@@ -9,7 +9,6 @@ class App extends Component {
     return (
       <div className="App">
         <Items />
-        <Item size="1" brand="test" color="black" />
       </div>
       );
     }
