@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import Item
+import Item from './item'
 
 
 class Items extends Component {
@@ -19,11 +19,14 @@ class Items extends Component {
       }
 
     render () {
+        const items = this.state.items.map((item) => {
+            return <Item key={item.id} size={item.size} brand={item.brand} color={item.color}/>
+        })
         return (
-            <div className="Items">
-          
+            <div className="items">
+                {items}
             </div>
-         );
+        );
     }
 }
 
