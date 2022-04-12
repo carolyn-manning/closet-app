@@ -5,14 +5,15 @@ class Item extends Component {
 
   handleOnClick = event => {
     const configObj = {
-    method: "DELETE", 
-    headers: {
+      method: "DELETE", 
+      headers: {
         "Content-Type": 'application/json',
         "Accept": "application/json",
+      }
     }
+    fetch(`http://localhost:4000/items/${this.props.id}`, configObj) 
+    //this.forceUpdate() 
   }
-  fetch(`http://localhost:4000/items/${this.props.id}`, configObj)
-}
 
   render () {
     return (

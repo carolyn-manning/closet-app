@@ -16,7 +16,7 @@ class Items extends Component {
                 items: data,
               });
           });
-      }
+    }
 
     render () {
         const items = this.state.items.map((item) => {

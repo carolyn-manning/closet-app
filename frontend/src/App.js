@@ -1,13 +1,14 @@
 import './App.css';
 import React, { Component } from 'react';
-import Item from  './components/item'
 import Items from  './components/items'
+import CreateItem from  './components/create_item'
 
 
 class App extends Component {
   render () {
     return (
       <div className="App">
+        <CreateItem />
         <Items />
       </div>
       );
