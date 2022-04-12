@@ -3,34 +3,32 @@ import React, { Component } from 'react';
 
 class CreateItem extends Component {
 
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         brand: '',
-    //         color: '',
-    //         size: ''
-    //     };
-    // }
+    constructor() {
+        super();
+        this.state = {
+            brand: '',
+            color: '',
+            size: ''
+        };
+    }
 
-    // handleBrandChange(event) {
-    //     const input = 
-    //     this.setState({
-    //       brand: event.target.value
-    //     });
-    // };
+    handleBrandChange = event => {
+        this.setState({
+          brand: event.target.value
+        });
+    };
 
-    // handleColorChange(event) {
-    //     const input = 
-    //     this.setState({
-    //       color: event.target.value
-    //     });
-    // };
+    handleColorChange = event => {
+        this.setState({
+          color: event.target.value
+        });
+    };
 
-    // handleSizeChange(event) {
-    //     this.setState({
-    //       size: event.target.value
-    //     });
-    // };
+    handleSizeChange = event => {
+        this.setState({
+          size: event.target.value
+        });
+    };
 
     handleSubmit = event => {
         const brandInput = document.getElementById('brand-input')
@@ -62,22 +60,22 @@ class CreateItem extends Component {
                     id = "brand-input"
                     type="text"
                     placeholder="Brand"
-                    //onChange={this.handleBrandChange(event)}
-                    //value={this.state.brand}
+                    onChange={this.handleBrandChange}
+                    value={this.state.brand}
                 />
                 <input
                     id = "color-input"
                     type="text"
                     placeholder="Color"
-                    // onChange={this.handleChange}
-                    //value={this.state.color}
+                    onChange={this.handleColorChange}
+                    value={this.state.color}
                 />
                 <input
                     id = "size-input"
                     type="text"
                     placeholder="Size"
-                    // onChange={this.handleChange}
-                    //value={this.state.size}
+                    onChange={this.handleSizeChange}
+                    value={this.state.size}
                 />
               <input type="submit" />
             </form>
