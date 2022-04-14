@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+//import { useForm } from "react-hook-form";
 
 class CreateItem extends Component {
 
@@ -8,7 +8,8 @@ class CreateItem extends Component {
         this.state = {
             brand: '',
             color: '',
-            size: ''
+            size: '',
+            clicked: false
         };
     }
 
@@ -49,38 +50,80 @@ class CreateItem extends Component {
                 size: sizeInput.value
             })
         }
-        fetch(`http://localhost:4000/items/`, configObj) 
+        fetch(`http://localhost:4000/items/`, configObj)
+    }
+
+    renderForm = () => {
+        return (
+            <div className='create-item-form'>
+              <form onSubmit={this.handleSubmit}>
+                  <input
+                      id = "brand-input"
+                      type="text"
+                      placeholder="Brand"
+                      onChange={this.handleBrandChange}
+                      value={this.state.brand}
+                  />
+                  <input
+                      id = "color-input"
+                      type="text"
+                      placeholder="Color"
+                      onChange={this.handleColorChange}
+                      value={this.state.color}
+                  />
+                  <input
+                      id = "size-input"
+                      type="text"
+                      placeholder="Size"
+                      onChange={this.handleSizeChange}
+                      value={this.state.size}
+                  />
+                <input type="submit" />
+              </form>
+            </div>
+        )
+    }
+
+    renderButton = () => {
+        return (
+            <div id='create-item-button'>
+              <button onclick={this.props.handleOnClick}> + New Item </button>
+            </div>
+        );
     }
 
     render() {
         return (
-          <div className='create-item-form'>
-            <form onSubmit={this.handleSubmit}>
-                <input
-                    id = "brand-input"
-                    type="text"
-                    placeholder="Brand"
-                    onChange={this.handleBrandChange}
-                    value={this.state.brand}
-                />
-                <input
-                    id = "color-input"
-                    type="text"
-                    placeholder="Color"
-                    onChange={this.handleColorChange}
-                    value={this.state.color}
-                />
-                <input
-                    id = "size-input"
-                    type="text"
-                    placeholder="Size"
-                    onChange={this.handleSizeChange}
-                    value={this.state.size}
-                />
-              <input type="submit" />
-            </form>
-          </div>
-        );
+            this.renderForm()
+            
+        )
+        //   <div className='create-item-form'>
+        //     <form onSubmit={this.handleSubmit}>
+        //         <input
+        //             id = "brand-input"
+        //             type="text"
+        //             placeholder="Brand"
+        //             onChange={this.handleBrandChange}
+        //             value={this.state.brand}
+        //         />
+        //         <input
+        //             id = "color-input"
+        //             type="text"
+        //             placeholder="Color"
+        //             onChange={this.handleColorChange}
+        //             value={this.state.color}
+        //         />
+        //         <input
+        //             id = "size-input"
+        //             type="text"
+        //             placeholder="Size"
+        //             onChange={this.handleSizeChange}
+        //             value={this.state.size}
+        //         />
+        //       <input type="submit" />
+        //     </form>
+        //   </div>
+        // );
       }
 }
 

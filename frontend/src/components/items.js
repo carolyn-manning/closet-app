@@ -20,7 +20,7 @@ class Items extends Component {
 
     render () {
         const items = this.state.items.map((item) => {
-            return <Item key={item.id} size={item.size} brand={item.brand} id={item.id} color={item.color} handleOnClick={this.handleOnClick}/>
+            return <Item key={item.id} size={item.size} brand={item.brand} id={item.id} color={item.color}/>
         })
         return (
             <div className="items">
