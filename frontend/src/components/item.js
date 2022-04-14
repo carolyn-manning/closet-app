@@ -18,6 +18,7 @@ class Item extends Component {
   render () {
     return (
       <li className="items-detail">
+          <img src={this.props.img} alt="item-img" width="250" height="100"/>
           {this.props.brand} {this.props.size} {this.props.color}
           <button onClick={this.handleOnClick}>DELETE</button>
       </li>

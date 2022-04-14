@@ -9,6 +9,7 @@ class CreateItem extends Component {
             brand: '',
             color: '',
             size: '',
+            image: '',
             clicked: false
         };
     }
@@ -18,6 +19,12 @@ class CreateItem extends Component {
           brand: event.target.value
         });
     };
+
+    handleFileChange = event => {
+         this.setState({
+             img: event.target.files[0]
+         })
+    }
 
     handleColorChange = event => {
         this.setState({
@@ -35,6 +42,7 @@ class CreateItem extends Component {
         const brandInput = document.getElementById('brand-input')
         const sizeInput = document.getElementById('size-input')
         const colorInput = document.getElementById('color-input')
+        const imgInput = document.getElementById('img-input')
 
         event.preventDefault();
 
@@ -47,7 +55,8 @@ class CreateItem extends Component {
             body: JSON.stringify({
                 brand: brandInput.value,
                 color: colorInput.value,
-                size: sizeInput.value
+                size: sizeInput.value,
+                image: imgInput.value
             })
         }
         fetch(`http://localhost:4000/items/`, configObj);
@@ -65,10 +74,10 @@ class CreateItem extends Component {
             <div className='create-item-form'>
               <form onSubmit={this.handleSubmit}>
                 <input
-                      id = "img-input"
-                      type="file"
-                      //onChange={this.handleBrandChange}
-                      //value={this.state.brand}
+                    id = "img-input"
+                    type="file"
+                    onChange={this.handleFileChange}
+                    value={this.state.image}
                   />
                   <input
                       id = "brand-input"

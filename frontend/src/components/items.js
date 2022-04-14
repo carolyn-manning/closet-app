@@ -20,6 +20,8 @@ class Items extends Component {
 
     render () {
         const items = this.state.items.map((item) => {
+            const img = item.img
+            //const imgURL = `require(${img})`
             return <Item key={item.id} size={item.size} brand={item.brand} id={item.id} color={item.color}/>
         })
         return (
