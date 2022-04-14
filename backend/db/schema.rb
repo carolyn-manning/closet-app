@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2022_04_10_015854) do
     t.string "brand"
     t.string "size"
     t.string "color"
+    t.string "img", default: "download-1.jpg"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

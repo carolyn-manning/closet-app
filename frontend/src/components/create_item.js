@@ -64,6 +64,12 @@ class CreateItem extends Component {
         return (
             <div className='create-item-form'>
               <form onSubmit={this.handleSubmit}>
+                <input
+                      id = "img-input"
+                      type="file"
+                      //onChange={this.handleBrandChange}
+                      //value={this.state.brand}
+                  />
                   <input
                       id = "brand-input"
                       type="text"
