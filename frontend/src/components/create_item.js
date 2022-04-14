@@ -50,10 +50,14 @@ class CreateItem extends Component {
                 size: sizeInput.value
             })
         }
-        fetch(`http://localhost:4000/items/`, configObj)
+        fetch(`http://localhost:4000/items/`, configObj);
+        this.clickToggle()
+    }
+
+    clickToggle = () => {
         this.setState({
             clicked: !this.state.clicked
-        });
+        })
     }
 
     renderForm = () => {
@@ -87,18 +91,24 @@ class CreateItem extends Component {
         )
     }
 
+    handleOnClick = event => {
+        //debugger;
+        this.clickToggle() 
+    }
+    
     renderButton = () => {
         return (
             <div id='create-item-button'>
-              <button onclick={this.props.handleOnClick}> + New Item </button>
+              <button onClick={this.handleOnClick}> + New Item </button>
             </div>
         );
     }
 
     render() {
         return (
-            this.renderForm()
-            
+           this.state.clicked ? this.renderForm() : this.renderButton() 
+           // this.renderForm() 
+           //this.renderButton()
         )
       }
 }
