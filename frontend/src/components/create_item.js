@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import { useForm } from "react-hook-form";
 
 class CreateItem extends Component {
 
@@ -9,7 +8,7 @@ class CreateItem extends Component {
             brand: '',
             color: '',
             size: '',
-            image: '',
+            img: '', //figure out why work image doest work here
             clicked: false
         };
     }
@@ -39,12 +38,23 @@ class CreateItem extends Component {
     };
 
     handleSubmit = event => {
-        const brandInput = document.getElementById('brand-input')
-        const sizeInput = document.getElementById('size-input')
-        const colorInput = document.getElementById('color-input')
-        const imgInput = document.getElementById('img-input')
+        // const brandInput = document.getElementById('brand-input')
+        // const sizeInput = document.getElementById('size-input')
+        // const colorInput = document.getElementById('color-input')
+        // const imgInput = document.getElementById('img-input')
+
+        const brand = this.state.brand
+        const color = this.state.color
+        const size = this.state.size
+        const img = this.state.img
 
         event.preventDefault();
+
+        // const formData = new FormData()
+        // formData.append('brand', brand)
+        // formData.append('size', size)
+        // formData.append('color', color)
+        // formData.append('image', img)
 
         const configObj = {
             method: "POST", 
@@ -53,10 +63,10 @@ class CreateItem extends Component {
                 "Accept": "application/json",
             },
             body: JSON.stringify({
-                brand: brandInput.value,
-                color: colorInput.value,
-                size: sizeInput.value,
-                image: this.state.image
+                brand: brand,
+                color: color,
+                size: size,
+                image: img
             })
         }
         fetch(`http://localhost:4000/items/`, configObj);
