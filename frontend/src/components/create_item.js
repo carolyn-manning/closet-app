@@ -51,6 +51,9 @@ class CreateItem extends Component {
             })
         }
         fetch(`http://localhost:4000/items/`, configObj)
+        this.setState({
+            clicked: !this.state.clicked
+        });
     }
 
     renderForm = () => {
@@ -97,33 +100,6 @@ class CreateItem extends Component {
             this.renderForm()
             
         )
-        //   <div className='create-item-form'>
-        //     <form onSubmit={this.handleSubmit}>
-        //         <input
-        //             id = "brand-input"
-        //             type="text"
-        //             placeholder="Brand"
-        //             onChange={this.handleBrandChange}
-        //             value={this.state.brand}
-        //         />
-        //         <input
-        //             id = "color-input"
-        //             type="text"
-        //             placeholder="Color"
-        //             onChange={this.handleColorChange}
-        //             value={this.state.color}
-        //         />
-        //         <input
-        //             id = "size-input"
-        //             type="text"
-        //             placeholder="Size"
-        //             onChange={this.handleSizeChange}
-        //             value={this.state.size}
-        //         />
-        //       <input type="submit" />
-        //     </form>
-        //   </div>
-        // );
       }
 }
 
