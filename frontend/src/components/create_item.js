@@ -56,7 +56,7 @@ class CreateItem extends Component {
                 brand: brandInput.value,
                 color: colorInput.value,
                 size: sizeInput.value,
-                image: imgInput.value
+                image: this.state.image
             })
         }
         fetch(`http://localhost:4000/items/`, configObj);
@@ -76,6 +76,7 @@ class CreateItem extends Component {
                 <input
                     id = "img-input"
                     type="file"
+                    accept="image/png, image/jpeg"
                     onChange={this.handleFileChange}
                     value={this.state.image}
                   />

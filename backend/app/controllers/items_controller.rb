@@ -12,7 +12,8 @@ class ItemsController < ApplicationController
 
     def show
         item  = Item.find_by(id: params[:id])
-        render json: item
+        image = rails_blob_path(item.image)
+        render json: {item: item, image:image}
     end
 
     def destroy 
