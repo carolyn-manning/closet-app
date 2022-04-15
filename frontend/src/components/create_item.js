@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 
 class CreateItem extends Component {
 
@@ -43,12 +45,16 @@ class CreateItem extends Component {
         // const colorInput = document.getElementById('color-input')
         // const imgInput = document.getElementById('img-input')
 
-        const brand = this.state.brand
-        const color = this.state.color
-        const size = this.state.size
-        const image = this.state.image
+        // const brand = this.state.brand
+        // const color = this.state.color
+        // const size = this.state.size
+        // const image = this.state.image
 
         event.preventDefault();
+        this.props.addItem(this.state);
+        // this.setState({
+        //     name: '',
+        // });
 
         // const formData = new FormData()
         // formData.append('brand', brand)
@@ -56,20 +62,20 @@ class CreateItem extends Component {
         // formData.append('color', color)
         // formData.append('image', img)
 
-        const configObj = {
-            method: "POST", 
-            headers: {
-                "Content-Type": 'application/json',
-                "Accept": "application/json",
-            },
-            body: JSON.stringify({
-                brand: brand,
-                color: color,
-                size: size,
-                image: {image}
-            })
-        }
-        fetch(`http://localhost:4000/items/`, configObj);
+        // const configObj = {
+        //     method: "POST", 
+        //     headers: {
+        //         "Content-Type": 'application/json',
+        //         "Accept": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         brand: brand,
+        //         color: color,
+        //         size: size,
+        //         image: {image}
+        //     })
+        // }
+        // fetch(`http://localhost:4000/items/`, configObj);
         this.clickToggle()
     }
 
@@ -138,4 +144,10 @@ class CreateItem extends Component {
       }
 }
 
-export default CreateItem;
+const mapDispatchToProps = (dispatch) => {
+    return {
+      addItem: (formData) => dispatch({ type: "ADD_ITEM", payload: formData }),
+    };
+  };
+
+export default connect(null, mapDispatchToProps)(CreateItem);
