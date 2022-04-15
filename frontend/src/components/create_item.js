@@ -8,7 +8,7 @@ class CreateItem extends Component {
             brand: '',
             color: '',
             size: '',
-            img: '', //figure out why work image doest work here
+            image: {}, //figure out why work image doest work here
             clicked: false
         };
     }
@@ -21,7 +21,7 @@ class CreateItem extends Component {
 
     handleFileChange = event => {
          this.setState({
-             img: event.target.files[0]
+             image: event.target.files[0]
          })
     }
 
@@ -46,7 +46,7 @@ class CreateItem extends Component {
         const brand = this.state.brand
         const color = this.state.color
         const size = this.state.size
-        const img = this.state.img
+        const image = this.state.image
 
         event.preventDefault();
 
@@ -66,7 +66,7 @@ class CreateItem extends Component {
                 brand: brand,
                 color: color,
                 size: size,
-                image: img
+                image: {image}
             })
         }
         fetch(`http://localhost:4000/items/`, configObj);
@@ -86,9 +86,8 @@ class CreateItem extends Component {
                 <input
                     id = "img-input"
                     type="file"
-                    accept="image/png, image/jpeg"
+                    accept="image/*"
                     onChange={this.handleFileChange}
-                    value={this.state.image}
                   />
                   <input
                       id = "brand-input"
