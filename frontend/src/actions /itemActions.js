@@ -1,11 +1,12 @@
-const addItem = () => {
+const addItem = (item) => {
     return {
-        type: 'ADD ITEM'
+        type: "ADD_ITEM",
+        item: item
     }
 }
 
 const deleteItem = () => {
     return {
-        type: 'DELETE ITEM'
+        type: 'DELETE_ITEM'
     }
 }

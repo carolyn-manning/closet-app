@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
+class ItemInput extends Component {
 
-class CreateItem extends Component {
-
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             brand: '',
             color: '',
             size: '',
-            image: {}, //figure out why work image doest work here
+            //image: {}, //figure out why work image doest work here
             clicked: false
         };
     }
@@ -51,10 +49,13 @@ class CreateItem extends Component {
         // const image = this.state.image
 
         event.preventDefault();
-        this.props.addItem(this.state);
+        this.props.addItem({brand: this.state.brand, size: this.state.size, color: this.state.color});
         // this.setState({
-        //     name: '',
+        //   brand: '',
+        //   color: '',
+        //   size: '',
         // });
+        
 
         // const formData = new FormData()
         // formData.append('brand', brand)
@@ -76,7 +77,7 @@ class CreateItem extends Component {
         //     })
         // }
         // fetch(`http://localhost:4000/items/`, configObj);
-        this.clickToggle()
+       // this.clickToggle()
     }
 
     clickToggle = () => {
@@ -88,7 +89,7 @@ class CreateItem extends Component {
     renderForm = () => {
         return (
             <div className='create-item-form'>
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={(event) => this.handleSubmit(event)}>
                 <input
                     id = "img-input"
                     type="file"
@@ -99,21 +100,21 @@ class CreateItem extends Component {
                       id = "brand-input"
                       type="text"
                       placeholder="Brand"
-                      onChange={this.handleBrandChange}
+                      onChange={(event) => this.handleBrandChange(event)}
                       value={this.state.brand}
                   />
                   <input
                       id = "color-input"
                       type="text"
                       placeholder="Color"
-                      onChange={this.handleColorChange}
+                      onChange={(event) => this.handleColorChange(event)}
                       value={this.state.color}
                   />
                   <input
                       id = "size-input"
                       type="text"
                       placeholder="Size"
-                      onChange={this.handleSizeChange}
+                      onChange={(event) => this.handleSizeChange(event)}
                       value={this.state.size}
                   />
                 <input type="submit" />
@@ -144,10 +145,4 @@ class CreateItem extends Component {
       }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-      addItem: (formData) => dispatch({ type: "ADD_ITEM", payload: formData }),
-    };
-  };
-
-export default connect(null, mapDispatchToProps)(CreateItem);
+export default ItemInput
