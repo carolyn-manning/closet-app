@@ -50,6 +50,11 @@ class ItemInput extends Component {
 
         event.preventDefault();
         this.props.addItem({brand: this.state.brand, size: this.state.size, color: this.state.color});
+        this.setState({
+            brand: '', 
+            size: '', 
+            color: ''
+        })
         // this.setState({
         //   brand: '',
         //   color: '',
@@ -77,7 +82,7 @@ class ItemInput extends Component {
         //     })
         // }
         // fetch(`http://localhost:4000/items/`, configObj);
-       // this.clickToggle()
+        this.clickToggle()
     }
 
     clickToggle = () => {

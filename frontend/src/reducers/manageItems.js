@@ -10,6 +10,7 @@ export default function manageItems(
       switch (action.type) {
         case "ADD_ITEM":
             const item = action.item;
+            item.action_id = cuidFn()
             console.log({ items: [...state.items, action.item] });
             return { items: [...state.items, action.item] };
 

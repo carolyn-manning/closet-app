@@ -13,10 +13,10 @@ class ClosetContainer extends Component {
         <ItemInput
           addItem={this.props.addItem}
         />
-        {/* <Items
+        <Items
           items={this.props.items}
-          handleSubmit={this.props.deleteItem}
-        /> */}
+          //deleteItem={this.props.deleteItem}
+        />
       </div>
     );
   }
