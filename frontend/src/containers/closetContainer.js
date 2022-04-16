@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ItemInput from '../components/itemInput'
 import Items from '../components/items'
 import { connect } from 'react-redux'
-import { addItem } from '../actions /itemActions'
 
 
 
@@ -15,7 +14,7 @@ class ClosetContainer extends Component {
         />
         <Items
           items={this.props.items}
-          //deleteItem={this.props.deleteItem}
+          deleteItem={this.props.deleteItem}
         />
       </div>
     );
@@ -28,7 +27,7 @@ const mapStateToProps = ({items}) => {
 
 const mapDispatchToProps = dispatch => ({
     addItem: item => dispatch({type: 'ADD_ITEM', item}),
-   // deleteItem: action_id => dispatch({type: 'DELETE_ITEM', action_id})
+    deleteItem: action_id => dispatch({type: 'DELETE_ITEM', action_id})
   })
 
   export default connect(mapStateToProps, mapDispatchToProps)(ClosetContainer);

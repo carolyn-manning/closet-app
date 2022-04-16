@@ -4,6 +4,9 @@ import React, { Component } from 'react';
 class Item extends Component {
 
   handleOnClick = event => {
+
+    this.props.deleteItem(this.props.action_id)
+
     // const configObj = {
     //   method: "DELETE", 
     //   headers: {
