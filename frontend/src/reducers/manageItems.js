@@ -4,6 +4,7 @@ export const cuidFn = cuid;
 export default function manageItems(
     state = {
         items: [],
+        requesting: false
       },
       action
     ) {
@@ -11,15 +12,27 @@ export default function manageItems(
         case "ADD_ITEM":
             const item = action.item;
             saveItemToDB( item )
-            item.action_id = cuidFn()
+            item.id = cuidFn()
             console.log({ items: [...state.items, item] });
             return { items: [...state.items, item] };
 
-
-
         case 'DELETE_ITEM':
-            const items = state.items.filter(item => item.action_id !== action.action_id);
+            const items = state.items.filter(item => item.id !== action.id);
             return { ...state, items}
+
+        case "START_ADDING_ITEMS_REQUEST":
+            return {
+                ...state,
+                items: [...state.items],
+                requesting: true,
+            };
+          
+        case "ADD_ITEMS":
+            return {
+                ...state,
+                items: action.items,
+                requesting: false,
+            };
 
         default:
             return state;

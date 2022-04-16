@@ -9,7 +9,6 @@ class ItemsController < ApplicationController
 
     def create
         item = Item.create(item_params)
-        binding.pry
         render json: item
     end 
 

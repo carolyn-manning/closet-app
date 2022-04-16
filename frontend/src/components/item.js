@@ -5,7 +5,7 @@ class Item extends Component {
 
   handleOnClick = event => {
 
-    this.props.deleteItem(this.props.action_id)
+    this.props.deleteItem(this.props.id)
 
     // const configObj = {
     //   method: "DELETE", 
