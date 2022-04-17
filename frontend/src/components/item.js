@@ -7,15 +7,14 @@ class Item extends Component {
 
     this.props.deleteItem(this.props.id)
 
-    // const configObj = {
-    //   method: "DELETE", 
-    //   headers: {
-    //     "Content-Type": 'application/json',
-    //     "Accept": "application/json",
-    //   }
-    // }
-    // fetch(`http://localhost:4000/items/${this.props.id}`, configObj) 
-    // //this.forceUpdate() 
+    const configObj = {
+      method: "DELETE", 
+      headers: {
+        "Content-Type": 'application/json',
+        "Accept": "application/json",
+      }
+    }
+    fetch(`http://localhost:4000/items/${this.props.id}`, configObj) 
   }
 
   render () {

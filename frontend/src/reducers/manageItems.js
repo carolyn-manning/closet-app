@@ -11,8 +11,8 @@ export default function manageItems(
       switch (action.type) {
         case "ADD_ITEM":
             const item = action.item;
-            saveItemToDB( item )
-            item.id = cuidFn()
+            //item.id = cuidFn()
+            saveItemToDB( item ) ///use thunk 
             console.log({ items: [...state.items, item] });
             return { items: [...state.items, item] };
 
@@ -50,8 +50,13 @@ function saveItemToDB( item ) {
                 brand: item.brand,
                 color: item.color,
                 size: item.size,
-                //image: {image}
             })
         }
-        fetch(`http://localhost:4000/items/`, configObj);
+
+        fetch(`http://localhost:4000/items/`, configObj)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            item.id = data.id
+        })
 }

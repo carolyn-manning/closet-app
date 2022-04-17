@@ -4,6 +4,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.string :brand
       t.string :size
       t.string :color
+      t.integer :user_id
     
       t.timestamps
     end

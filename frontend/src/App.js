@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 //import CreateItem from  './components/itemInput'
 import ReactDOM from 'react-dom';
 import ClosetContainer from  './containers/closetContainer'
+import LogIn from  './components/login'
+
 
 
 
@@ -13,7 +15,8 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-        <ClosetContainer />
+         <ClosetContainer />
+        <LogIn />
       </div>
       );
     }
