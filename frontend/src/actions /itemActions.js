@@ -3,7 +3,9 @@ export function fetchItems() {
     dispatch({ type: "START_ADDING_ITEMS_REQUEST" });
     fetch('http://localhost:4000/items', {headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`}})
       .then((response) => response.json())
-      .then((items) => {dispatch({ type: "ADD_ITEMS", items })});
+      .then((items) => {
+        console.log(items)
+        dispatch({ type: "ADD_ITEMS", items })});
   };
 }
 
@@ -29,7 +31,7 @@ export function saveItemToDB( item ) {
           .then(response => response.json())
           .then((data) => {
             item.id = data.id;
-            item.image_url = data.image_url
+            item.image_url = data.image_url;
             dispatch({ type: "ADD_ITEM", item })
 
       })
