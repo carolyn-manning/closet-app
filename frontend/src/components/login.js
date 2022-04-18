@@ -42,7 +42,7 @@ class LogIn extends Component {
         fetch(`http://localhost:4000/login/`, configObj)
         .then(response => response.json())
         .then(data => {
-            localStorage.setItem("jwt", data.jwt)
+            if(data.jwt) {localStorage.setItem("jwt", data.jwt)}
         })
     }
 
