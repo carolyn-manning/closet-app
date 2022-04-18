@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+//import { useNavigate } from "react-router-dom";
 
 
 class SignOut extends Component {
 
   handleOnClick = event => {
-    localStorage.removeItem("jwt")
+   // let navigate = useNavigate()
+    localStorage.removeItem("jwt");
+    //navigate("/")
   }
 
   render () {

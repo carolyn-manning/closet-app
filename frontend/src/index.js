@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import WelcomeContainer from './containers/welcomeContainer';
 import ClosetContainer from './containers/closetContainer';
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Navigate, Routes} from "react-router-dom";
 
 
 
@@ -29,12 +29,24 @@ ReactDOM.render (
      {/* <App/> */}
     <Router>
       <div>
-          <Route exact path="/" render={() => (
-            localStorage.jwt ? (
-              <Redirect to="/my_closet" /> ) : (<WelcomeContainer/> ))} />
-          <Route exact path="/my_closet" render={() => (
-            !localStorage.jwt ? (
-              <Redirect to="/" /> ) : (<ClosetContainer/> ))} />
+        <Routes>
+          <Route 
+              exact path="/" 
+              element={
+                localStorage.jwt ? (
+                  <Navigate replace to="/my_closet" /> 
+                ) : (
+                  <WelcomeContainer/> )
+              } />
+          <Route 
+            exact path="/my_closet" 
+            element={
+              !localStorage.jwt ? (
+                <Navigate replace to="/" /> 
+              ) : (
+                <ClosetContainer/> )
+            } />
+          </Routes>
       </div>
     </Router>
   </Provider>,

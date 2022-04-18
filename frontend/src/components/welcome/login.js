@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router'
 
 
 class LogIn extends Component {
@@ -45,7 +44,6 @@ class LogIn extends Component {
         .then(data => {
             if(data.jwt) {
                 localStorage.setItem("jwt", data.jwt);
-                { <Redirect to="/my_closet"/>}
             }
         })
         
