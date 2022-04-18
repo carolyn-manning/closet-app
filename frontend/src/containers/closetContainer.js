@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import ItemInput from '../components/itemInput'
-import Items from '../components/items'
+import ItemInput from '../components/closet/itemInput'
+import Items from '../components/closet/items'
 import { connect } from 'react-redux'
 import { fetchItems } from '../actions /itemActions';
 import { saveItemToDB } from '../actions /itemActions';
+import NavBar from '../components/closet/navBar';
 
 class ClosetContainer extends Component {
 
@@ -14,6 +15,7 @@ class ClosetContainer extends Component {
   render() {
     return (
       <div>
+        <NavBar />
         <ItemInput
           addItem={this.props.addItem}
         />

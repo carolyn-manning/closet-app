@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
 import { createStore, applyMiddleware, compose } from "redux"; 
 import manageItems from "./reducers/manageItems";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
+import WelcomeContainer from './containers/welcomeContainer';
+import ClosetContainer from './containers/closetContainer';
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+
+
 
 
 //const store = createStore(manageItems, applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()); 
@@ -22,7 +26,17 @@ const store = createStore(
 
 ReactDOM.render (
   <Provider store={store}>
-    <App />
+     {/* <App/> */}
+    <Router>
+      <div>
+          <Route exact path="/" render={() => (
+            localStorage.jwt ? (
+              <Redirect to="/my_closet" /> ) : (<WelcomeContainer/> ))} />
+          <Route exact path="/my_closet" render={() => (
+            !localStorage.jwt ? (
+              <Redirect to="/" /> ) : (<ClosetContainer/> ))} />
+      </div>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );
