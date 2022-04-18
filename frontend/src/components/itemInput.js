@@ -8,7 +8,7 @@ class ItemInput extends Component {
             brand: '',
             color: '',
             size: '',
-            image: {}, 
+            image: '', 
             clicked: false
         };
     }
@@ -38,46 +38,16 @@ class ItemInput extends Component {
     };
 
     handleSubmit = event => {
-        // const brandInput = document.getElementById('brand-input')
-        // const sizeInput = document.getElementById('size-input')
-        // const colorInput = document.getElementById('color-input')
-        // const imgInput = document.getElementById('img-input')
-
-        // const brand = this.state.brand
-        // const color = this.state.color
-        // const size = this.state.size
-        // const image = this.state.image
-
         event.preventDefault();
         this.props.addItem({brand: this.state.brand, size: this.state.size, color: this.state.color, image: this.state.image});
         
-        // this.setState({
-        //   brand: '',
-        //   color: '',
-        //   size: '',
-        // });
-        
+        this.setState({
+          brand: '',
+          color: '',
+          size: '',
+          image: ''
+        });
 
-        // const formData = new FormData()
-        // formData.append('brand', brand)
-        // formData.append('size', size)
-        // formData.append('color', color)
-        // formData.append('image', image)
-
-        // const configObj = {
-        //     method: "POST", 
-        //     headers: {
-        //         "Content-Type": 'application/json',
-        //         "Accept": "application/json",
-        //     },
-        //     body: JSON.stringify({
-        //         brand: brand,
-        //         color: color,
-        //         size: size,
-        //         image: {image}
-        //     })
-        // }
-        // fetch(`http://localhost:4000/items/`, configObj);
         this.clickToggle()
     }
 
