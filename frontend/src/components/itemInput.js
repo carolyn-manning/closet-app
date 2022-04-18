@@ -8,7 +8,7 @@ class ItemInput extends Component {
             brand: '',
             color: '',
             size: '',
-            //image: {}, //figure out why work image doest work here
+            image: '', //figure out why work image doest work here
             clicked: false
         };
     }
@@ -49,12 +49,8 @@ class ItemInput extends Component {
         // const image = this.state.image
 
         event.preventDefault();
-        this.props.addItem({brand: this.state.brand, size: this.state.size, color: this.state.color});
-        this.setState({
-            brand: '', 
-            size: '', 
-            color: ''
-        })
+        this.props.addItem({brand: this.state.brand, size: this.state.size, color: this.state.color, image: this.state.image});
+        
         // this.setState({
         //   brand: '',
         //   color: '',
@@ -100,6 +96,7 @@ class ItemInput extends Component {
                     type="file"
                     accept="image/*"
                     onChange={this.handleFileChange}
+                    //value = {this.state.image}
                   />
                   <input
                       id = "brand-input"

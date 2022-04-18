@@ -22,7 +22,7 @@ class Items extends Component {
         const items = this.props.items.map((item) => {
             //const img = item.image_url
             //const imgURL = 'require(`${img}`)' 
-            return <Item key={item.id} size={item.size} brand={item.brand} color={item.color} id={item.id} deleteItem={this.props.deleteItem}/>
+            return <Item image_url={`http://localhost:4000/${item.image_url}`} key={item.id} size={item.size} brand={item.brand} color={item.color} id={item.id} deleteItem={this.props.deleteItem}/>
         })
         return (
             <div className="items">

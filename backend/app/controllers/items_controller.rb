@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
     def index
-            render json: Item.all.with_attached_image
+        render json: current_user.items.with_attached_image
     #     items = Item.all.joins(:image_attachment)
     #     render json: @users.map { |user| 
     #        user.as_json(only: %i[name]).merge(
@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     end 
 
     def create
-        item = Item.create(item_params)
+        item = current_user.items.create(item_params)
         render json: item
     end 
 
@@ -25,6 +25,6 @@ class ItemsController < ApplicationController
 
     private 
     def item_params
-        params.require(:item).permit(:brand, :size, :color, :image) 
+        params.permit(:brand, :size, :color, :image) 
     end 
 end

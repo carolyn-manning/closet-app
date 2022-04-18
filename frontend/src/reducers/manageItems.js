@@ -12,9 +12,12 @@ export default function manageItems(
         case "ADD_ITEM":
             const item = action.item;
             //item.id = cuidFn()
-            saveItemToDB( item ) ///use thunk 
-            console.log({ items: [...state.items, item] });
-            return { items: [...state.items, item] };
+            saveItemToDB( item )///use thunk 
+            .then(item => {
+                console.log({ items: [...state.items, item] });
+                return { items: [...state.items, item] };
+            })
+            
 
         case 'DELETE_ITEM':
             const items = state.items.filter(item => item.id !== action.id);
@@ -40,20 +43,21 @@ export default function manageItems(
 }
 
 function saveItemToDB( item ) {
+    const formData = new FormData()
+    formData.append('brand', item.brand)
+    formData.append('size', item.size)
+    formData.append('color', item.color)
+    formData.append('image', item.image)
+
     const configObj = {
             method: "POST", 
             headers: {
-                "Content-Type": 'application/json',
-                "Accept": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("jwt")}`
             },
-            body: JSON.stringify({
-                brand: item.brand,
-                color: item.color,
-                size: item.size,
-            })
+            body: formData
         }
 
-        fetch(`http://localhost:4000/items/`, configObj)
+       return fetch(`http://localhost:4000/items/`, configObj)
         .then(response => response.json())
         .then(data => {
             console.log(data);

@@ -12,6 +12,7 @@ class Item extends Component {
       headers: {
         "Content-Type": 'application/json',
         "Accept": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("jwt")}`
       }
     }
     fetch(`http://localhost:4000/items/${this.props.id}`, configObj) 
@@ -20,7 +21,7 @@ class Item extends Component {
   render () {
     return (
       <li className="items-detail">
-          <img src={this.props.img} alt="item-img" width="250" height="100"/>
+          <img src={this.props.image_url} alt="item-img" width="250" height="100"/>
           {this.props.brand} {this.props.size} {this.props.color}
           <button onClick={this.handleOnClick}>DELETE</button>
       </li>
