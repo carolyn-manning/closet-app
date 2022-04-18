@@ -5,21 +5,31 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ClosetContainer from  './containers/closetContainer'
 import LogIn from  './components/login'
+import SignOut from  './components/signOut.js'
 
 
 
 
+//do redux for auth 
+//set up create user 
 
 class App extends Component {
 
   render () {
-    return (
-      <div className="App">
-         <ClosetContainer />
-        <LogIn />
-      </div>
-      );
+    if(localStorage.jwt) {
+      return ( 
+        <div className="App"> 
+          <ClosetContainer />
+          <SignOut />
+        </div> 
+      )
+    } else {
+      return ( 
+        <div className="App"> <LogIn /> </div> 
+      )
     }
+  }
 }
+
 
 export default App;

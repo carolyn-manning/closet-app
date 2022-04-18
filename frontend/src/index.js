@@ -9,6 +9,7 @@ import manageItems from "./reducers/manageItems.js";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
+
 //const store = createStore(manageItems, applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()); 
 
 const store = createStore(
@@ -19,7 +20,7 @@ const store = createStore(
   )
 );
 
-ReactDOM.render(
+ReactDOM.render (
   <Provider store={store}>
     <App />
   </Provider>,

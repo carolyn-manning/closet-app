@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
     def index
-        render json: Item.all.with_attached_image
+            render json: Item.all.with_attached_image
     #     items = Item.all.joins(:image_attachment)
     #     render json: @users.map { |user| 
     #        user.as_json(only: %i[name]).merge(

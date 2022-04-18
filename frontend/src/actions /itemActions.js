@@ -11,7 +11,7 @@
 //     }
 // }
 
-function fetchItems() {
+export default function fetchItems() {
     return (dispatch) => {
       dispatch({ type: "START_ADDING_ITEMS_REQUEST" });
       fetch('http://localhost:4000/items')
