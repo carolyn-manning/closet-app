@@ -8,7 +8,7 @@ class ItemInput extends Component {
             brand: '',
             color: '',
             size: '',
-            image: '', //figure out why work image doest work here
+            image: {}, 
             clicked: false
         };
     }
@@ -62,7 +62,7 @@ class ItemInput extends Component {
         // formData.append('brand', brand)
         // formData.append('size', size)
         // formData.append('color', color)
-        // formData.append('image', img)
+        // formData.append('image', image)
 
         // const configObj = {
         //     method: "POST", 

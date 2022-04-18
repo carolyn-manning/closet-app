@@ -1,21 +1,39 @@
-// const addItem = (item) => {
-//     return {
-//         type: "ADD_ITEM",
-//         item: item
-//     }
-// }
+export function fetchItems() {
+  return (dispatch) => {
+    dispatch({ type: "START_ADDING_ITEMS_REQUEST" });
+    fetch('http://localhost:4000/items', {headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`}})
+      .then((response) => response.json())
+      .then((items) => {dispatch({ type: "ADD_ITEMS", items })});
+  };
+}
 
-// const deleteItem = () => {
-//     return {
-//         type: 'DELETE_ITEM'
-//     }
-// }
+export function saveItemToDB( item ) {
+  const formData = new FormData()
+  formData.append('brand', item.brand)
+  formData.append('size', item.size)
+  formData.append('color', item.color)
+  formData.append('image', item.image)
 
-export default function fetchItems() {
-    return (dispatch) => {
-      dispatch({ type: "START_ADDING_ITEMS_REQUEST" });
-      fetch('http://localhost:4000/items')
-        .then((response) => response.json())
-        .then((items) => dispatch({ type: "ADD_ITEMS", items }));
-    };
+  const configObj = {
+          method: "POST", 
+          headers: {
+      
+              "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+          },
+          body: formData
+      }
+
+      return (dispatch) => {
+        dispatch({ type: "START_ADDING_ITEM_REQUEST" }); 
+        fetch(`http://localhost:4000/items/`, configObj)
+          .then(response => response.json())
+          .then((data) => {
+            console.log(item)
+            console.log(data)
+            item.id = data.id;
+            item.image_url = data.image_url;
+            dispatch({ type: "ADD_ITEM", item })
+
+      })
+    }
 }

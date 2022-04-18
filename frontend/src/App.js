@@ -8,19 +8,14 @@ import LogIn from  './components/login'
 import SignOut from  './components/signOut.js'
 
 
-
-
-//do redux for auth 
-//set up create user 
-
 class App extends Component {
 
   render () {
     if(localStorage.jwt) {
       return ( 
         <div className="App"> 
-          <ClosetContainer />
-          <SignOut />
+            <ClosetContainer />
+            <SignOut />
         </div> 
       )
     } else {

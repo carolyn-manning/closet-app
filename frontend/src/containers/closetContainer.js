@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ItemInput from '../components/itemInput'
 import Items from '../components/items'
 import { connect } from 'react-redux'
+import { fetchItems } from '../actions /itemActions';
+import { saveItemToDB } from '../actions /itemActions';
 
 class ClosetContainer extends Component {
 
@@ -29,18 +31,44 @@ const mapStateToProps = ({items}) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    addItem: item => dispatch({type: 'ADD_ITEM', item}),
+    //addItem: item => dispatch({type: 'ADD_ITEM', item}),
     deleteItem: id => dispatch({type: 'DELETE_ITEM', id}), 
-    fetchItems: () => dispatch(fetchItems())
+    fetchItems: () => dispatch(fetchItems()),
+    addItem: item => dispatch(saveItemToDB(item))
   })
 
-function fetchItems() {
-    return (dispatch) => {
-      dispatch({ type: "START_ADDING_ITEMS_REQUEST" });
-      fetch('http://localhost:4000/items', {headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`}})
-        .then((response) => response.json())
-        .then((items) => {console.log(items); dispatch({ type: "ADD_ITEMS", items })});
-    };
-}
+// function fetchItems() {
+//     return (dispatch) => {
+//       dispatch({ type: "START_ADDING_ITEMS_REQUEST" });
+//       fetch('http://localhost:4000/items', {headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`}})
+//         .then((response) => response.json())
+//         .then((items) => {dispatch({ type: "ADD_ITEMS", items })});
+//     };
+// }
+
+// function saveItemToDB( item ) {
+//   const formData = new FormData()
+//   formData.append('brand', item.brand)
+//   formData.append('size', item.size)
+//   formData.append('color', item.color)
+//   formData.append('image', item.image)
+
+//   const configObj = {
+//           method: "POST", 
+//           headers: {
+      
+//               "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+//           },
+//           body: formData
+//       }
+
+//       return (dispatch) => {
+//         dispatch({ type: "START_ADDING_ITEMS_REQUEST" }); 
+//         fetch(`http://localhost:4000/items/`, configObj)
+//           .then(response => response.json())
+//           .then(data => {
+//             item.id = data.id
+//       })
+// }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClosetContainer);
