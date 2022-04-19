@@ -10,6 +10,7 @@ import thunk from "redux-thunk";
 import WelcomeContainer from './containers/welcomeContainer';
 import ClosetContainer from './containers/closetContainer';
 import { BrowserRouter as Router, Route, Navigate, Routes} from "react-router-dom";
+import CreateUser from './components/welcome/createUser';
 
 
 
@@ -45,6 +46,14 @@ ReactDOM.render (
                 <Navigate replace to="/" /> 
               ) : (
                 <ClosetContainer/> )
+            } />
+            <Route 
+            exact path="/signup" 
+            element={
+              localStorage.jwt ? (
+                <Navigate replace to="/my_closet" /> 
+              ) : (
+                <CreateUser /> )
             } />
           </Routes>
       </div>

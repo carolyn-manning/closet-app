@@ -6,8 +6,9 @@ class LogIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
+            email: '', 
             password: '',
+            jwt: '',
         }
     }
 
@@ -44,6 +45,9 @@ class LogIn extends Component {
         .then(data => {
             if(data.jwt) {
                 localStorage.setItem("jwt", data.jwt);
+                this.setState({jwt: data.jwt})
+                window.location.reload();
+                //fix 
             }
         })
         
