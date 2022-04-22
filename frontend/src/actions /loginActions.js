@@ -1,3 +1,6 @@
+
+//currently not used - fetch called in LogIn component
+
 import {useNavigate} from "react-router-dom";
 
 export default function LogInAction (userCredentials) {
@@ -16,7 +19,7 @@ export default function LogInAction (userCredentials) {
     }) 
   }
 
-  //let navigate = useNavigate()
+  let navigate = useNavigate()
         
   return (dispatch) => {
     dispatch({ type: "START_LOG_IN_REQUEST" });
@@ -28,12 +31,11 @@ export default function LogInAction (userCredentials) {
         dispatch({ type: "LOG_IN", userCredentials });
       }
     })
-    .then( () =>  {console.log("hi")})
+    .then( () => navigate('/my_closet'))
   }
 }
 
-
-//hook is erroring 
+//hook is erroring (look into)
 
 
    

@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 
-
 class Item extends Component {
 
   handleOnClick = event => {
 
     this.props.deleteItem(this.props.id)
 
-    const configObj = {
-      method: "DELETE", 
-      headers: {
-        "Content-Type": 'application/json',
-        "Accept": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("jwt")}`
-      }
-    }
-    fetch(`http://localhost:4000/items/${this.props.id}`, configObj) 
+    // const configObj = {
+    //   method: "DELETE", 
+    //   headers: {
+    //     "Content-Type": 'application/json',
+    //     "Accept": "application/json",
+    //     "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+    //   }
+    // }
+    // fetch(`http://localhost:4000/items/${this.props.id}`, configObj) 
   }
 
   render () {

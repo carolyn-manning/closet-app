@@ -67,6 +67,7 @@ class ItemInput extends Component {
                     accept="image/*"
                     onChange={this.handleFileChange}
                     //value = {this.state.image}
+                    // breaks when above is umcommented
                   />
                   <input
                       id = "brand-input"
@@ -96,7 +97,6 @@ class ItemInput extends Component {
     }
 
     handleOnClick = event => {
-        //debugger;
         this.clickToggle() 
     }
     
@@ -111,8 +111,6 @@ class ItemInput extends Component {
     render() {
         return (
            this.state.clicked ? this.renderForm() : this.renderButton() 
-           // this.renderForm() 
-           //this.renderButton()
         )
       }
 }

@@ -4,7 +4,6 @@ export function fetchItems() {
     fetch('http://localhost:4000/items', {headers: {Authorization: `Bearer ${localStorage.getItem("jwt")}`}})
       .then((response) => response.json())
       .then((items) => {
-        console.log(items)
         dispatch({ type: "ADD_ITEMS", items })});
   };
 }
@@ -14,7 +13,6 @@ export function saveItemToDB( item ) {
   formData.append('brand', item.brand)
   formData.append('size', item.size)
   formData.append('color', item.color)
-  //formData.append('image', item.image)
   if(item.image !== '') {formData.append('image', item.image)}
 
   const configObj = {
@@ -37,4 +35,26 @@ export function saveItemToDB( item ) {
       })
     }
 }
+
+export function deleteItem(id) {
+  const configObj = {
+    method: "DELETE", 
+    headers: {
+      "Content-Type": 'application/json',
+      "Accept": "application/json",
+      "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+    }
+  }
+  
+  return (dispatch) => {
+    fetch(`http://localhost:4000/items/${id}`, configObj) 
+    .then(response => response.json())
+    .then((data) =>  dispatch({ type: "DELETE_ITEM", id}))
+  }
+      
+}
+
+
+
+
 

@@ -11,9 +11,6 @@ export default function manageItems(
         const item = action.item;
         switch (action.type) {
             case "START_ADDING_ITEM_REQUEST":
-                console.log(state) 
-                //const item = action.item;
-                //saveItemToDB(item)
                 return {
                     ...state,
                     items: [...state.items],
@@ -21,18 +18,12 @@ export default function manageItems(
                 };
 
             case "ADD_ITEM":
-                console.log(state) 
-                //const item = action.item;
-                // saveItemToDB(item)
-                // .then((item) => {return { items: [...state.items, item] } } )
                 return {
                     items: [...state.items, item],
                     requesting: false,
                 }; 
                     
-
             case 'DELETE_ITEM':
-                console.log(state)
                 const items = state.items.filter(item => item.id !== action.id);
                 return { ...state, items}
 

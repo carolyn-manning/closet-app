@@ -1,4 +1,6 @@
 
+// currently not in use 
+
 export default function manageLogIn(
 
     state = {

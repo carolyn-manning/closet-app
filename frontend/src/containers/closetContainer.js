@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { fetchItems } from '../actions /itemActions';
 import { saveItemToDB } from '../actions /itemActions';
 import NavBar from '../components/closet/navBar';
+import {deleteItem} from '../actions /itemActions';
 
 class ClosetContainer extends Component {
 
@@ -34,11 +35,10 @@ const mapStateToProps = (state) => {
 } }
 
 const mapDispatchToProps = dispatch => ({
-    //addItem: item => dispatch({type: 'ADD_ITEM', item}),
-    deleteItem: id => dispatch({type: 'DELETE_ITEM', id}), 
+    deleteItem: id => dispatch(deleteItem(id)), 
     fetchItems: () => dispatch(fetchItems()),
     addItem: item => dispatch(saveItemToDB(item))
-  })
+})
 
 // function fetchItems() {
 //     return (dispatch) => {
