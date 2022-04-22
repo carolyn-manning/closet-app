@@ -4,10 +4,6 @@ import { SignOut } from './signOut';
 
 class NavBar extends Component {
 
-  // handleOnClick = event => {
-  //   localStorage.removeItem("jwt")
-  // }
-
   render () {
     return (
       <div className="nav-bar">

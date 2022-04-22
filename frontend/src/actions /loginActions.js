@@ -28,7 +28,7 @@ export default function LogInAction (userCredentials) {
         dispatch({ type: "LOG_IN", userCredentials });
       }
     })
-    .then( () =>  {console.log("hi") //naviagte})
+    .then( () =>  {console.log("hi")})
   }
 }
 

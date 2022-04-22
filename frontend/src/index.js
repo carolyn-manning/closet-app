@@ -1,21 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware, compose } from "redux"; 
-import allReducers from "./reducers/allReducers";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-import WelcomeContainer from './containers/welcomeContainer';
-import ClosetContainer from './containers/closetContainer';
 import { BrowserRouter as Router, Route, Navigate, Routes} from "react-router-dom";
-import CreateUser from './components/welcome/createUser';
 import manageItems from './reducers/manageItems';
 import manageLogIn from './reducers/manageLogIn';
 import {combineReducers} from 'redux'
-
-//const store = createStore(manageItems, applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()); 
+import PrivateClosetRoute from './components/routes/PrivateClosetRoute';
+import LogInRoute from './components/routes/LogInRoute';
+import CreateUserRoute from './components/routes/CreateUserRoute';
 
 const store = createStore(
   combineReducers({manageItems, manageLogIn}),
@@ -30,19 +26,23 @@ ReactDOM.render (
     <Router>
       <div>
         <Routes>
-          <Route 
+          <Route exact path="/my_closet" element={<PrivateClosetRoute />} />
+          <Route exact path="/" element={<LogInRoute />} />
+          <Route exact path="/sign_up" element={<CreateUserRoute />} />
+
+          {/* <Route 
               exact path="/" 
               element={
                 localStorage.jwt ? (
-                  <Navigate replace to="/my_closet" /> 
+                  <Navigate to="/my_closet" /> 
                 ) : (
                   <WelcomeContainer/> )
               } />
           <Route 
             exact path="/my_closet" 
             element={
-              !localStorage.jwt ? (
-                <Navigate replace to="/" /> 
+              !localStorage.getItem('jwt') ? (
+                <Navigate to="/" /> 
               ) : (
                 <ClosetContainer/> )
             } />
@@ -50,10 +50,10 @@ ReactDOM.render (
             exact path="/signup" 
             element={
               localStorage.jwt ? (
-                <Navigate replace to="/my_closet" /> 
+                <Navigate to="/my_closet" /> 
               ) : (
                 <CreateUser /> )
-            } />
+            } /> */}
           </Routes>
       </div>
     </Router>
@@ -65,5 +65,3 @@ ReactDOM.render (
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-
-//<App store={store} /> 
