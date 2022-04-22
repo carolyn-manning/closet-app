@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {useNavigate} from "react-router-dom";
 
 
 class LogIn extends Component {
@@ -8,7 +9,6 @@ class LogIn extends Component {
         this.state = {
             email: '', 
             password: '',
-            jwt: '',
         }
     }
 
@@ -26,30 +26,33 @@ class LogIn extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        const configObj = {
-            method: "POST", 
-            headers: {
-                "Content-Type": 'application/json',
-                "Accept": "application/json",
-            },
-            body: JSON.stringify({
-                user:{
-                email: this.state.email,
-                password: this.state.password,
-                }
-            })
-        }
+        this.props.logIn(this.state);
+        useNavigate('/happy')
+        // const configObj = {
+        //     method: "POST", 
+        //     headers: {
+        //         "Content-Type": 'application/json',
+        //         "Accept": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         user:{
+        //         email: this.state.email,
+        //         password: this.state.password,
+        //         }
+        //     })
+        // }
 
-        fetch(`http://localhost:4000/login/`, configObj)
-        .then(response => response.json())
-        .then(data => {
-            if(data.jwt) {
-                localStorage.setItem("jwt", data.jwt);
-                this.setState({jwt: data.jwt})
-                window.location.reload();
-                //fix 
-            }
-        })
+        // fetch(`http://localhost:4000/login/`, configObj)
+        // .then(response => response.json())
+        // .then(data => {
+        //     if(data.jwt) {
+        //         localStorage.setItem("jwt", data.jwt);
+        //         this.setState({jwt: data.jwt})
+        //         window.location.reload(); 
+        //         //fix - pass through history object as argument to action 
+        //         //redux persist. 
+        //     }
+        // })
         
     }
 

@@ -28,9 +28,10 @@ class ClosetContainer extends Component {
   }
 }
 
-const mapStateToProps = ({items}) => {
-  return {items}
-}
+const mapStateToProps = (state) => {
+  return {
+    items: state.manageItems.items
+} }
 
 const mapDispatchToProps = dispatch => ({
     //addItem: item => dispatch({type: 'ADD_ITEM', item}),

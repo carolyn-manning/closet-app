@@ -1,10 +1,6 @@
 class ItemsController < ApplicationController
     def index
         render json: current_user.items.with_attached_image
-    #     items = Item.all.joins(:image_attachment)
-    #     render json: @users.map { |user| 
-    #        user.as_json(only: %i[name]).merge(
-    #        avatar_path: url_for(user.avatar) }  
     end 
 
     def create
@@ -14,7 +10,6 @@ class ItemsController < ApplicationController
 
     def show
         item  = Item.find_by(id: params[:id])
-        # image = rails_blob_path(item.image)
         render json: item
     end
 
