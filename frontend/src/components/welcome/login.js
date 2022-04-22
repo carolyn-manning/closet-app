@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+///language for redux refator commented out. still working. 
+
+//import React, { Component } from 'react';
 import {useNavigate} from "react-router-dom";
 
 export default function LogIn() {

@@ -1,5 +1,3 @@
-import cuid from 'cuid';
-export const cuidFn = cuid;
 
 export default function manageItems(
     state = {

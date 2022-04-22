@@ -1,3 +1,6 @@
+
+//currently not in use 
+
 import './App.css';
 import React, { Component } from 'react';
 import ClosetContainer from  './containers/closetContainer'

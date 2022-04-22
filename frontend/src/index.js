@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { createStore, applyMiddleware, compose } from "redux"; 
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
-import { BrowserRouter as Router, Route, Navigate, Routes} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import manageItems from './reducers/manageItems';
 import manageLogIn from './reducers/manageLogIn';
 import {combineReducers} from 'redux'
@@ -29,32 +29,7 @@ ReactDOM.render (
           <Route exact path="/my_closet" element={<PrivateClosetRoute />} />
           <Route exact path="/" element={<LogInRoute />} />
           <Route exact path="/sign_up" element={<CreateUserRoute />} />
-
-          {/* <Route 
-              exact path="/" 
-              element={
-                localStorage.jwt ? (
-                  <Navigate to="/my_closet" /> 
-                ) : (
-                  <WelcomeContainer/> )
-              } />
-          <Route 
-            exact path="/my_closet" 
-            element={
-              !localStorage.getItem('jwt') ? (
-                <Navigate to="/" /> 
-              ) : (
-                <ClosetContainer/> )
-            } />
-            <Route 
-            exact path="/signup" 
-            element={
-              localStorage.jwt ? (
-                <Navigate to="/my_closet" /> 
-              ) : (
-                <CreateUser /> )
-            } /> */}
-          </Routes>
+        </Routes>
       </div>
     </Router>
   </Provider>,

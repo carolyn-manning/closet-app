@@ -1,5 +1,5 @@
 
-//currently not used - fetch called in LogIn component
+//currently not used - fetch called in LogIn component. useNavigate is erroring
 
 import {useNavigate} from "react-router-dom";
 
