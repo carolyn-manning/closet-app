@@ -1,9 +1,4 @@
-///working on refacrtoring using redux
-
-//import React, { Component } from 'react';
-
-
-
+///working on refactoring using redux
 
 import {useNavigate} from "react-router-dom";
 import React, { useState } from 'react';
@@ -63,6 +58,7 @@ export default function LogIn() {
                     id = "email-input"
                     placeholder="Email"
                     onChange={(event) => handleEmailChange(event)}
+                    value= {email}
         
                 />
                 <br></br>
@@ -71,6 +67,7 @@ export default function LogIn() {
                     id = "password-input"
                     placeholder="Password"
                     onChange={(event) => handlePasswordChange(event)}
+                    value= {password}
                 />
                 <br></br>
             <input type="submit" value="Sign In" />

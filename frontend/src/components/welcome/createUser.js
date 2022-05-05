@@ -1,56 +1,36 @@
-///language for redux refator commented out. still working. 
-
-
-//import React, { Component } from 'react';
 import {useNavigate} from "react-router-dom";
+import React, { useState } from 'react';
+
 
 export default function CreateUser() {
 
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             email: '', 
-//             password: '',
-//             first_name: '', 
-//             last_name: '', 
-//             jwt: ''
-//         }
-//     }
-
-//     handleEmailChange = event => {
-//         this.setState({
-//           email: event.target.value
-//         });
-//     };
-
-//     handlePasswordChange = event => {
-//          this.setState({
-//              password: event.target.value
-//          })
-//     }
-
-//     handleFirstNameChange = event => {
-//         this.setState({
-//             first_name: event.target.value
-//         })
-//    }
-
-//     handleLastNameChange = event => {
-//         this.setState({
-//             last_name: event.target.value
-//         })
-//     }
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [error, setError] = useState('');
 
     const navigate = useNavigate()
 
+    const handleEmailChange = event => {
+        setEmail( event.target.value );
+    };
+
+    const handlePasswordChange = event => {
+        setPassword (event.target.value)
+    }
+
+    const handleFirstNameChange = event => {
+        setFirstName( event.target.value );
+    }
+        
+    const handleLastNameChange = event => {
+        setLastName( event.target.value );
+    }
+
     const handleSubmit = event => {
         event.preventDefault();
-
-        const emailInput = document.getElementById('email-input')
-        const passwordInput = document.getElementById('password-input')
-        const firstNameInput = document.getElementById('first-name-input')
-        const lastNameInput = document.getElementById('last-name-input')
-
+        
         const configObj = {
             method: "POST", 
             headers: {
@@ -59,10 +39,10 @@ export default function CreateUser() {
             },
             body: JSON.stringify({
                 user:{
-                email: emailInput.value,
-                password: passwordInput.value,
-                first_name: firstNameInput.value, 
-                last_name: lastNameInput.value, 
+                email: email,
+                password: password,
+                first_name: firstName, 
+                last_name: lastName, 
                 }
             })
         }
@@ -70,51 +50,54 @@ export default function CreateUser() {
         fetch(`http://localhost:4000/users/`, configObj)
         .then(response => response.json())
         .then(data => {
-            if(data.jwt) {localStorage.setItem("jwt", data.jwt)}
+            if(data.jwt) {
+                localStorage.setItem("jwt", data.jwt);
+                navigate('/my_closet')
+            } else {
+                setError("There is already an email for this account")
+            }
         })
-        .then(() => {navigate('/my_closet') })   
     }
 
-    //render () {
-        return (
-            <div className='new-user-form'>
-            <form onSubmit={(event) => handleSubmit(event)}>
-                <input
-                    type="email"
-                    id = "email-input"
-                    placeholder="Email"
-                    // onChange={(event) => this.handleEmailChange(event)}
-                    // value={this.state.email}
-                />
-                <br></br>
-                <input
-                    type="password"
-                    id = "password-input"
-                    placeholder="Password"
-                    // onChange={(event) => this.handlePasswordChange(event)}
-                    // value={this.state.password}
-                />
-                <br></br>
-                <input
-                    type="text"
-                    id = "first-name-input"
-                    placeholder="First Name"
-                    // onChange={(event) => this.handleFirstNameChange(event)}
-                    // value={this.state.first_name}
-                />
-                <br></br>
-                <input
-                    type="text"
-                    id = "last-name-input"
-                    placeholder="Last Name"
-                    // onChange={(event) => this.handleLastNameChange(event)}
-                    // value={this.state.last_name}
-                />
-                <br></br>
+    return (
+        <div className='new-user-form'>
+        <h3>{error}</h3>
+        <form onSubmit={(event) => handleSubmit(event)}>
+            <input
+                type="email"
+                id = "email-input"
+                placeholder="Email"
+                onChange={(event) => handleEmailChange(event)}
+                value={email}
+            />
+            <br></br>
+            <input
+                type="password"
+                id = "password-input"
+                placeholder="Password"
+                onChange={(event) => handlePasswordChange(event)}
+                value={password}
+            />
+            <br></br>
+            <input
+                type="text"
+                id = "first-name-input"
+                placeholder="First Name"
+                onChange={(event) => handleFirstNameChange(event)}
+                value={firstName}
+            />
+            <br></br>
+            <input
+                type="text"
+                id = "last-name-input"
+                placeholder="Last Name"
+                onChange={(event) => handleLastNameChange(event)}
+                value={lastName}
+            />
+            <br></br>
             <input type="submit" value="Sign Up" />
-            </form>
-            </div>
+        </form>
+        </div>
         )
-   // }
 }
 
