@@ -48,7 +48,6 @@ class ItemInput extends Component {
           image: ''
         });
 
-        this.clickToggle()
     }
 
     clickToggle = () => {

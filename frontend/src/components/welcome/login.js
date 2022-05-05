@@ -1,4 +1,4 @@
-///language for redux refator commented out. still working. 
+///working on refacrtoring using redux
 
 //import React, { Component } from 'react';
 
@@ -13,6 +13,7 @@ export default function LogIn() {
 
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [error, setError] = useState('');
 
     const handleEmailChange = event => {
         setEmail( event.target.value );
@@ -44,13 +45,18 @@ export default function LogIn() {
         fetch(`http://localhost:4000/login/`, configObj)
         .then(response => response.json())
         .then(data => {
-            if(data.jwt) {localStorage.setItem("jwt", data.jwt)}
-        })
-        .then(() => {navigate('/my_profile') })    
+            if(data.jwt) {
+                localStorage.setItem("jwt", data.jwt);
+                navigate('/my_closet')
+            } else {
+                setError("Incorrect Email or Password. Please Try Again.")
+            }
+        })   
     }
 
     return (
             <div className='log-in-form'>
+            <h3>{error}</h3>
             <form onSubmit={(event) => handleSubmit(event)}>
                 <input
                     type="email"
