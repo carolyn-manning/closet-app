@@ -1,35 +1,30 @@
 ///language for redux refator commented out. still working. 
 
 //import React, { Component } from 'react';
+
+
+
+
 import {useNavigate} from "react-router-dom";
+import React, { useState } from 'react';
+
 
 export default function LogIn() {
 
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         email: '', 
-    //         password: '',
-    //     }
-    // }
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
 
-    // handleEmailChange = event => {
-    //     this.setState({
-    //       email: event.target.value
-    //     });
-    // };
+    const handleEmailChange = event => {
+        setEmail( event.target.value );
+    };
 
-    // handlePasswordChange = event => {
-    //      this.setState({
-    //          password: event.target.value
-    //      })
-    // }
+    const handlePasswordChange = event => {
+        setPassword (event.target.value)
+    }
 
     const navigate = useNavigate()
 
     const handleSubmit = event => {
-        const emailInput = document.getElementById('email-input')
-        const passwordInput = document.getElementById('password-input')
 
         event.preventDefault();
         const configObj = {
@@ -40,8 +35,8 @@ export default function LogIn() {
             },
             body: JSON.stringify({
                 user:{
-                email: emailInput.value,
-                password: passwordInput.value,
+                email: email,
+                password: password,
                 }
             })
         }
@@ -49,19 +44,19 @@ export default function LogIn() {
         fetch(`http://localhost:4000/login/`, configObj)
         .then(response => response.json())
         .then(data => {
-            if(data.jwt) { localStorage.setItem("jwt", data.jwt) ;}
+            if(data.jwt) {localStorage.setItem("jwt", data.jwt)}
         })
-        .then(() => {navigate('/my_closet') })    
+        .then(() => {navigate('/my_profile') })    
     }
 
-        return (
+    return (
             <div className='log-in-form'>
             <form onSubmit={(event) => handleSubmit(event)}>
                 <input
                     type="email"
                     id = "email-input"
                     placeholder="Email"
-                  //  onChange={(event) => this.handleEmailChange(event)}
+                    onChange={(event) => handleEmailChange(event)}
         
                 />
                 <br></br>
@@ -69,8 +64,7 @@ export default function LogIn() {
                     type="password"
                     id = "password-input"
                     placeholder="Password"
-                   // onChange={(event) => this.handlePasswordChange(event)}
-        
+                    onChange={(event) => handlePasswordChange(event)}
                 />
                 <br></br>
             <input type="submit" value="Sign In" />

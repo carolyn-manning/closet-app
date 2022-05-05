@@ -13,7 +13,7 @@ class ItemInput extends Component {
         };
     }
 
-    handleBrandChange = event => {
+    handleBrandChange = (event) => {
         this.setState({
           brand: event.target.value
         });

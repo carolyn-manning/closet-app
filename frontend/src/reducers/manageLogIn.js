@@ -1,5 +1,6 @@
 
-// currently not in use 
+// currently not in use
+// working on  refactoring log-in component to work with redux
 
 export default function manageLogIn(
 

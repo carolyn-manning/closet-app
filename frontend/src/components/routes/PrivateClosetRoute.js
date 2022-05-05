@@ -7,4 +7,4 @@ function PrivateClosetRoute() {
     return auth ? <ClosetContainer /> : <Navigate to="/" />;
 }
 
-export default PrivateClosetRoute; 
+export default PrivateClosetRoute
