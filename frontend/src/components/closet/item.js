@@ -9,7 +9,7 @@ class Item extends Component {
   render () {
     return (
       <div className="item-detail">
-          <img src={this.props.image_url} alt="item-img" width="250" height="100"/>
+          <img src={this.props.image_url} alt="item-img" width="250" height="105"/>
           <li>Brand: {this.props.brand}</li>
           <li>Size: {this.props.size}</li>
           <li>Color: {this.props.color}</li>
