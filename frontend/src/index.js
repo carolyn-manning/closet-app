@@ -12,6 +12,7 @@ import {combineReducers} from 'redux'
 import PrivateClosetRoute from './components/routes/PrivateClosetRoute';
 import LogInRoute from './components/routes/LogInRoute';
 import CreateUserRoute from './components/routes/CreateUserRoute';
+import App from './App';
 
 const store = createStore(
   combineReducers({manageItems, manageLogIn}),
@@ -25,11 +26,12 @@ ReactDOM.render (
   <Provider store={store}>
     <Router>
       <div>
-        <Routes>
+        <App />
+        {/* <Routes>
           <Route exact path="/my_closet" element={<PrivateClosetRoute />} />
           <Route exact path="/" element={<LogInRoute />} />
           <Route exact path="/sign_up" element={<CreateUserRoute />} />
-        </Routes>
+        </Routes> */}
       </div>
     </Router>
   </Provider>,
