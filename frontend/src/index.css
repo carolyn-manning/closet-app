@@ -89,7 +89,7 @@ code {
   background-color: darkolivegreen;
 }
 
-img {
+.logo {
   width: 50%;
   height: 50%;
   max-width: 200px;
@@ -110,4 +110,11 @@ li {
   text-align: center;
   margin: auto;
 
+}
+
+.item-img {
+  width: auto;
+  max-width: 150px;
+  height: auto;
+  max-height: 140px;
 }
