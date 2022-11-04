@@ -1,12 +1,10 @@
 
 import './App.css';
 import React, { Component } from 'react';
-import ClosetContainer from  './containers/closetContainer'
-import WelcomeContainer from './containers/welcomeContainer';
 import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
-import PrivateClosetRoute from './components/routes/PrivateClosetRoute';
-import LogInRoute from './components/routes/LogInRoute';
-import CreateUserRoute from './components/routes/CreateUserRoute';
+import PrivateClosetRoute from './routes/privateClosetRoute';
+import LogInRoute from './routes/logInRoute';
+import CreateUserRoute from './routes/createUserRoute';
 
 
 class App extends Component {
