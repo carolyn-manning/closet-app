@@ -45,7 +45,8 @@ class ItemInput extends Component {
           brand: '',
           color: '',
           size: '',
-          image: ''
+          image: '', 
+          clicked: false
         });
 
     }
