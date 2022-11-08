@@ -20,6 +20,6 @@ class ItemsController < ApplicationController
 
     private 
     def item_params
-        params.permit(:brand, :size, :color, :image) 
+        params.permit(:brand, :size, :color, :image, :item_type) 
     end 
 end

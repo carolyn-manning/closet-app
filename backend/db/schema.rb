@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 2022_11_04_142418) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "type"
     t.string "item_type"
   end
 

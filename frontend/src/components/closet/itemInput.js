@@ -9,6 +9,7 @@ class ItemInput extends Component {
             color: '',
             size: '',
             image: '', 
+            itemType: '',
             clicked: false
         };
     }
@@ -37,15 +38,22 @@ class ItemInput extends Component {
         });
     };
 
+    handleTypeChange = event => {
+        this.setState({
+          itemType: event.target.value
+        });
+    };
+
     handleSubmit = event => {
         event.preventDefault();
-        this.props.addItem({brand: this.state.brand, size: this.state.size, color: this.state.color, image: this.state.image});
+        this.props.addItem({brand: this.state.brand, size: this.state.size, color: this.state.color, image: this.state.image, item_type: this.state.itemType});
         
         this.setState({
           brand: '',
           color: '',
           size: '',
           image: '', 
+          itemType: '',
           clicked: false
         });
 
@@ -89,6 +97,13 @@ class ItemInput extends Component {
                       placeholder="Size"
                       onChange={(event) => this.handleSizeChange(event)}
                       value={this.state.size}
+                  />
+                  <input
+                      id = "type-input"
+                      type="text"
+                      placeholder="Type"
+                      onChange={(event) => this.handleTypeChange(event)}
+                      value={this.state.itemType}
                   />
                 <input type="submit" />
               </form>

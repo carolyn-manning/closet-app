@@ -13,6 +13,7 @@ export function saveItemToDB( item ) {
   formData.append('brand', item.brand)
   formData.append('size', item.size)
   formData.append('color', item.color)
+  formData.append('item_type', item.item_type)
   if(item.image !== '') {formData.append('image', item.image)}
 
   const configObj = {
