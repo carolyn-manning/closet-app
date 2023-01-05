@@ -6,6 +6,7 @@ import { fetchItems } from '../actions /itemActions';
 import { saveItemToDB } from '../actions /itemActions';
 import NavBar from '../components/closet/navBar';
 import {deleteItem} from '../actions /itemActions';
+import FilterButton from '../components/closet/filterButton';
 
 class ClosetContainer extends Component {
 
@@ -24,6 +25,9 @@ class ClosetContainer extends Component {
           items={this.props.items}
           deleteItem={this.props.deleteItem}
         />
+        {/* <FilterButton
+          items={this.props.items}
+        /> */}
       </div>
     );
   }
