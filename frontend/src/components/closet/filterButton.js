@@ -6,20 +6,17 @@ class FilterButton extends Component {
         super(props);
         this.state = {
             clicked: false, 
-            items: []
+            items: [],
+            itemTypes: [1, 2, 3]
         };
-        //this.types = this.props.items
-        //new Set(this.props.items.map(item => item.type));
-    }
-
-    removeDuplicates = () => {
-
     }
 
     componentDidMount() {
-        this.setState({
-            items: this.props.items
-        })
+        this.setState({items: this.props.items})
+    }
+
+    removeTypeDuplicates = () => { 
+        return Array.from(new Set(this.state.items.map(item => item.item_type)))
     }
 
     handleOnClick = event => {
@@ -38,16 +35,16 @@ class FilterButton extends Component {
     }
 
     renderForm = () => {
-        const typesCheckBox = this.state.items.map((type) => {
+        const typesCheckBox = this.removeTypeDuplicates().map((type) => {
             return (
                 <div className='type-checkbox'>
                     <input
                         type="checkbox"
-                        name={type.item_type}
-                        value={type.item_type}
-                        key={type.item_type}
+                        name={type}
+                        value={type}
+                        key={type}
                     />
-                    <label for={type.item_type}>{type.item_type}</label>
+                    <label for={type}>{type}</label>
                 </div>
             )
         })

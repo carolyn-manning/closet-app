@@ -25,9 +25,9 @@ class ClosetContainer extends Component {
           items={this.props.items}
           deleteItem={this.props.deleteItem}
         />
-        {/* <FilterButton
+        <FilterButton
           items={this.props.items}
-        /> */}
+        />
       </div>
     );
   }
