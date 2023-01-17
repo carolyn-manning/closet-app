@@ -7,7 +7,6 @@ class FilterButton extends Component {
         this.state = {
             clicked: false, 
             items: [],
-            itemTypes: [1, 2, 3]
         };
     }
 
@@ -15,7 +14,7 @@ class FilterButton extends Component {
         this.setState({items: this.props.items})
     }
 
-    removeTypeDuplicates = (att) => { 
+    removeDuplicates = (att) => { 
         return Array.from(new Set(this.state.items.map(item => item[att])))
     }
 
@@ -28,14 +27,14 @@ class FilterButton extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log("type filter being built")
+        console.log("filter being built")
         this.setState({
             clicked: !this.state.clicked
         })
     }
 
     renderForm = () => {
-        const typesCheckBox = this.removeTypeDuplicates("item_type").map((type) => {
+        const typesCheckBox = this.removeDuplicates("item_type").map((type) => {
             return (
                 <div className='type-checkbox'>
                     <input
@@ -49,10 +48,25 @@ class FilterButton extends Component {
             )
         })
 
+        const colorsCheckBox = this.removeDuplicates("color").map((color) => {
+            return (
+                <div className='type-checkbox'>
+                    <input
+                        type="checkbox"
+                        name={color}
+                        value={color}
+                        key={color}
+                    />
+                    <label for={color}>{color}</label>
+                </div>
+            )
+        })
+
         return (
-            <div className='filter-items-form'>
+            <div className='filter-form'>
               <form onSubmit={(event) => this.handleSubmit(event)}>
                 {typesCheckBox}
+                {colorsCheckBox}
                 <input type="submit" />
               </form>
             </div>
