@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FilterCheckbox from './filterCheckbox';
 
 class FilterButton extends Component {
    
@@ -12,10 +13,6 @@ class FilterButton extends Component {
 
     componentDidMount() {
         this.setState({items: this.props.items})
-    }
-
-    removeDuplicates = (att) => { 
-        return Array.from(new Set(this.state.items.map(item => item[att])))
     }
 
     handleOnClick = event => {
@@ -34,39 +31,17 @@ class FilterButton extends Component {
     }
 
     renderForm = () => {
-        const typesCheckBox = this.removeDuplicates("item_type").map((type) => {
-            return (
-                <div className='type-checkbox'>
-                    <input
-                        type="checkbox"
-                        name={type}
-                        value={type}
-                        key={type}
-                    />
-                    <label for={type}>{type}</label>
-                </div>
-            )
-        })
-
-        const colorsCheckBox = this.removeDuplicates("color").map((color) => {
-            return (
-                <div className='type-checkbox'>
-                    <input
-                        type="checkbox"
-                        name={color}
-                        value={color}
-                        key={color}
-                    />
-                    <label for={color}>{color}</label>
-                </div>
-            )
-        })
-
         return (
             <div className='filter-form'>
               <form onSubmit={(event) => this.handleSubmit(event)}>
-                {typesCheckBox}
-                {colorsCheckBox}
+                    <FilterCheckbox
+                        items={this.state.items}
+                        attribute="color"
+                    />
+                    <FilterCheckbox
+                        items={this.state.items}
+                        attribute="item_type"
+                    />
                 <input type="submit" />
               </form>
             </div>
