@@ -42,6 +42,10 @@ class FilterButton extends Component {
                         items={this.state.items}
                         attribute="item_type"
                     />
+                    <FilterCheckbox
+                        items={this.state.items}
+                        attribute="brand"
+                    />
                 <input type="submit" />
               </form>
             </div>
