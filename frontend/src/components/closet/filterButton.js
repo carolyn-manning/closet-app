@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FilterCheckbox from './filterCheckbox';
+import FilterCheckboxContainer from './filterCheckboxContainer';
 
 class FilterButton extends Component {
    
@@ -32,23 +32,10 @@ class FilterButton extends Component {
 
     renderForm = () => {
         return (
-            <div className='filter-form'>
-              <form onSubmit={(event) => this.handleSubmit(event)}>
-                    <FilterCheckbox
-                        items={this.state.items}
-                        attribute="color"
-                    />
-                    <FilterCheckbox
-                        items={this.state.items}
-                        attribute="item_type"
-                    />
-                    <FilterCheckbox
-                        items={this.state.items}
-                        attribute="brand"
-                    />
-                <input type="submit" />
-              </form>
-            </div>
+            <FilterCheckboxContainer
+                items={this.state.items}
+                handleSubmit={this.handleSubmit}
+            />
         )
     }
     
