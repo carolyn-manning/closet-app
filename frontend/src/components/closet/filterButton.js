@@ -31,6 +31,7 @@ class FilterButton extends Component {
     }
 
     renderForm = () => {
+        debugger;
         return (
             <FilterCheckboxContainer
                 items={this.state.items}
