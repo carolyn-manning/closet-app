@@ -17,6 +17,11 @@ export function filter (items, filter, attribute) {
     return items.filter(item => filter(item, attribute))
 }
 
+// export function addToItemStore (itemsStore, filteredItems) {
+//     filteredItems.forEach(item => itemStore)
+
+// }
+
 
 
 

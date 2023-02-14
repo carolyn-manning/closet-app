@@ -55,6 +55,10 @@ export function deleteItem(id) {
       
 }
 
+export function filterItems() {
+  return (dispatch) => {dispatch({ type: "FILTER_ITEMS" })}
+}
+
 
 
 

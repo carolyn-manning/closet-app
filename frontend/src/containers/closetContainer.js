@@ -7,6 +7,7 @@ import { saveItemToDB } from '../actions /itemActions';
 import NavBar from '../components/closet/navBar';
 import {deleteItem} from '../actions /itemActions';
 import FilterButton from '../components/closet/filterButton';
+import { filterItems } from '../actions /itemActions';
 
 class ClosetContainer extends Component {
 
@@ -27,6 +28,7 @@ class ClosetContainer extends Component {
         />
         <FilterButton
           items={this.props.items}
+          filterItems={this.props.filterItems}
         />
       </div>
     );
@@ -41,7 +43,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
     deleteItem: id => dispatch(deleteItem(id)), 
     fetchItems: () => dispatch(fetchItems()),
-    addItem: item => dispatch(saveItemToDB(item))
+    addItem: item => dispatch(saveItemToDB(item)), 
+    filterItems: () => dispatch(filterItems())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClosetContainer);

@@ -39,6 +39,10 @@ export default function manageItems(
                     requesting: false,
                 }; 
 
+            case "FILTER_ITEMS":
+                console.log("filter build in progress")
+                return state ;
+
         default:
             return state;
     }

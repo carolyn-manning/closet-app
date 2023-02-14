@@ -24,14 +24,13 @@ class FilterButton extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
-        console.log("filter being built")
         this.setState({
             clicked: !this.state.clicked
-        })
+        });
+        this.props.filterItems()
     }
 
     renderForm = () => {
-        debugger;
         return (
             <FilterCheckboxContainer
                 items={this.state.items}
