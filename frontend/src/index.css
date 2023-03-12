@@ -76,7 +76,7 @@ code {
   float: left;
 }
 
-.filter-form {
+#filter-form {
   position:fixed;
   top: 205px;
   right: .6%;
@@ -85,7 +85,7 @@ code {
   display: inline-block;
 }
 
-.checkbox-container {
+.filter-checkbox-list {
   display: inline-block;
 
 }

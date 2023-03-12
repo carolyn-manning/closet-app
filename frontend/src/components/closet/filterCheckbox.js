@@ -10,12 +10,13 @@ class FilterCheckbox extends Component {
         return (
             this.removeDuplicates(`${this.props.attribute}`).map((attribute) => {
                 return (
-                    <div className="checkbox-container">
+                    <div className='filter-checkbox-list '>
                         <input
-                            type="checkbox"
-                            name={attribute}
+                            type="radio"
+                            name= "item-type-name"
                             value={attribute}
                             key={attribute}
+                            onChange={this.props.handleChange}
                         />
                         <label for={attribute}>{attribute}</label>
                     </div>

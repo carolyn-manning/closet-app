@@ -8,6 +8,7 @@ class FilterButton extends Component {
         this.state = {
             clicked: false, 
             items: [],
+            itemType: ''
         };
     }
 
@@ -28,6 +29,7 @@ class FilterButton extends Component {
             clicked: !this.state.clicked
         });
         this.props.filterItems()
+        console.log(event.target.value)
     }
 
     renderForm = () => {
